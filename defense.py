@@ -54,7 +54,7 @@ def victim_node_selection(old_g, x, original_len, all_loss, attack_nodes, train_
     alpha = 1
     max_iters = 2  #
     g = old_g.clone()
-    all_loss = torch.sqrt(torch.exp(torch.tensor(list(all_loss.values()),device = g.device))).pow(4)
+    all_loss = torch.tensor(list(all_loss.values()),device = g.device).pow(9)
     g.ndata['feat'] = all_loss
     g = g.remove_self_loop()
     all_src, all_dst = g.edges()
