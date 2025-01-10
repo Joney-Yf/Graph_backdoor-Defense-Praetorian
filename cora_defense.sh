@@ -1,15 +1,14 @@
-learning_rates=(0.001)  # lr 参数的不同取值
-mask_rates=(0.1)        # mask_rate 参数的不同取值
-layers=(2)                          # layer 参数的不同取值
-k_hops=(0)                          # k_hop 参数的不同取值
-seeds=(1)                               # seeds 参数的不同取值
-epochs=(1500)                           # 训练 epochs
+learning_rates=(0.001)  
+mask_rates=(0.1)       
+layers=(2)                        
+k_hops=(0)                          
+seeds=(1)                             
+epochs=(1500)                          
 num_hiddens=(512)
 num_decoder_layers=(1)
-attacks=(GTA)
+attacks=(DPGBA UGBA SBA GTA)
 trigger_sizes=(3)
 vs_sizes=(10)
-# 循环遍历所有参数组合
 for seed in "${seeds[@]}"
 do
   for mask_rate in "${mask_rates[@]}"
@@ -34,7 +33,6 @@ do
                     do
                       for backdoor_file in ./Cora/*${attack}*train*
                       do
-                        # 运行 Python 脚本，替换对应的参数
                         python defense.py \
                           --dataset cora \
                           --encoder gat \
