@@ -51,7 +51,7 @@ do
                           --num_hidden $num_hidden \
                           --num_decoder_layer $num_decoder_layer\
                           --test_model GCN \
-                          --target_class 0 >> ${attack}_Cora_time_cost.log
+                          --target_class 0 >> ${attack}_Cora.log
                       done
                     done
                   done
