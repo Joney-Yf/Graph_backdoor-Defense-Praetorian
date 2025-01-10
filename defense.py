@@ -232,7 +232,6 @@ def victim_and_trigger_nodes_detection(args):
             scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda=scheduler)
         else:
             scheduler = None
-        calculate_both_score_time_begin = time.time()
         x = graph.ndata["feat"]
         y = graph.ndata["label"]
         if not load_model:
@@ -281,10 +280,7 @@ def victim_and_trigger_nodes_detection(args):
                     label_loss_valid[i] = loss_dict['label_loss']
                 save_loss_dict[i] = loss_dict
 
-            calculate_both_score_time_end = time.time()
-            print('='*100)
-            print('Time cost of calculating both score is', calculate_both_score_time_end - calculate_both_score_time_begin)
-            print('='*100)
+
             file_name = args.backdoor_train_file.split('/')[-1]
             with open('loss_dict_{}.json'.format(file_name), 'w', encoding='utf-8') as f:
                 json.dump(save_loss_dict, f, ensure_ascii=False, indent=4)
@@ -344,8 +340,8 @@ def victim_and_trigger_nodes_detection(args):
                 attr_loss_valid[i] = 0
                 label_loss_valid[i]= 0
             else:
-                attr_loss_valid[i] = 10 * (attr_loss_valid[i] - attr_mean)/attr_std
-                label_loss_valid[i] = 10 *  (label_loss_valid[i] - label_mean)/label_std
+                attr_loss_valid[i] = (attr_loss_valid[i] - attr_mean)/attr_std
+                label_loss_valid[i] = (label_loss_valid[i] - label_mean)/label_std
             # node_with_loss[i] =  w_i * attr_loss_valid[i] +  w_e * label_loss_valid[i] 
 
             attr_loss_dict[i] = attr_loss_valid[i]
@@ -381,12 +377,7 @@ def victim_and_trigger_nodes_detection(args):
         for i in tqdm(range(len(x))):
             node_with_loss[i] =  w_i * attr_loss_valid[i] +  label_loss_valid[i] 
         node_rank(graph, x,original_len,node_with_loss, attack_nodes,train_idx)
-        node_selection_time_begin = time.time()
         selected_nodes, trigger_selection, target_label_overall = victim_node_selection(graph, x,original_len,node_with_loss, attack_nodes, train_idx, y, isolated_nodes)
-        node_selection_time_end = time.time()
-        print('='*100)
-        print('The node selection time is', node_selection_time_end - node_selection_time_begin)
-        print('='*100)
         # print('########################## victim node selection #################################')
         # selected_nodes, trigger_selection = victim_node_selection(graph, x,original_len,node_with_loss, attack_nodes, train_idx, y, isolated_nodes)
     
@@ -426,12 +417,7 @@ def defense(args):
     print('########## After Defense, the Attack Performance #############')
     test_model = model_construct(args,args.test_model,x, labels,args.device).to(args.device) 
     bkd_tn_nodes = torch.cat([train_idx,attack]).to(args.device)
-    relearn_time_begin = time.time()
     test_model.fit(x, edge_index, edge_weight, labels, bkd_tn_nodes, val_idx, victim_nodes, trigger_selection, adv_unlearn=True, train_iters=400,verbose=False)
-    relearn_time_end = time.time()
-    print('='*100)
-    print('The relearn time cost is', relearn_time_end - relearn_time_begin)
-    print('='*100)
     induct_x, induct_edge_index, induct_edge_index, induct_edge_weight, labels, train_idx, val_idx, idx_atk, idx_clean_test = torch.load(backdoor_test_file, map_location=torch.device(args.device))
     induct_x, induct_edge_index,induct_edge_weight = induct_x.clone().detach(), induct_edge_index.clone().detach(),induct_edge_weight.clone().detach()
     trigger_selection = torch.tensor(trigger_selection, dtype=torch.long, device=induct_x.device)
