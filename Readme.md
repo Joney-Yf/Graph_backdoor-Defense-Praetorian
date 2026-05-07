@@ -1,6 +1,9 @@
 # PRAETORIAN Anonymous Reproducibility Package
 
-This repository contains the anonymous reproduction package for the paper ``PRAETORIAN''. It includes the code, scripts, and dataset-loading utilities needed to reproduce the main experiments reported in the manuscript. The repository is anonymized for double-blind review.
+This repository contains the anonymous reproduction package for the paper
+``PRAETORIAN: [anonymous submission]''. It includes the code, scripts, and
+dataset-loading utilities needed to reproduce the main experiments reported in
+the manuscript. The repository is anonymized for double-blind review.
 
 ## Quick start
 
@@ -10,9 +13,6 @@ To run the toy example on the Cora dataset under the DPGBA attack:
 bash cora_defense.sh
 ```
 
-This script runs the default defense pipeline on a small benchmark setting and
-is intended as a lightweight sanity check before launching the full experiments.
-
 ## Reproducibility notes
 
 - The paper uses public graph benchmark datasets and previously published graph
@@ -20,10 +20,10 @@ is intended as a lightweight sanity check before launching the full experiments.
 - Dataset loaders and preprocessing scripts are included where applicable.
 - If a dataset is not bundled locally, the corresponding script downloads it
   from the original public source or from the standard benchmark loader.
-- The repository does not claim ownership over any third-party dataset, library,
-  or implementation.
+- This repository does not claim ownership over any third-party dataset,
+  library, or implementation.
 
-## Third-party datasets and licenses
+## Third-party datasets and license / terms status
 
 The following public datasets are used only for academic benchmarking and
 reproducibility. Please cite the original dataset papers/sources when using this
@@ -33,7 +33,7 @@ repository.
 |---|---|---|---|
 | Cora | LINQS citation-network benchmark, also available through common GNN dataset loaders | McCallum et al., *Automating the Construction of Internet Portals with Machine Learning*, 2000 | The original LINQS release is publicly available, but we did not find an explicit dataset license in the original release metadata. We use it as a standard academic benchmark and cite the original source. |
 | PubMed / PubMed Diabetes | LINQS PubMed Diabetes citation-network benchmark | Sen et al., *Collective Classification in Network Data*, 2008 | The original LINQS release is publicly available, but we did not find an explicit dataset license in the original release metadata. We use it as a standard academic benchmark and cite the original source. |
-| OGB-arxiv / ogbn-arxiv | Open Graph Benchmark (OGB) node-property prediction dataset | Hu et al., *Open Graph Benchmark: Datasets for Machine Learning on Graphs*, 2021 | OGB lists the `ogbn-arxiv` dataset under the Open Data Commons Attribution License (ODC-BY). Users should follow the OGB terms and attribution requirements. |
+| OGB-arxiv / ogbn-arxiv | Open Graph Benchmark (OGB) node-property prediction dataset | Hu et al., *Open Graph Benchmark: Datasets for Machine Learning on Graphs*, 2021 | OGB lists `ogbn-arxiv` under the Open Data Commons Attribution License (ODC-BY). Users should follow the OGB terms and attribution requirements. |
 | Flickr | Flickr node-classification benchmark from GraphSAINT, available through DGL/PyG dataset loaders | Zeng et al., *GraphSAINT: Graph Sampling Based Inductive Learning Method*, 2020 | The benchmark is distributed through the GraphSAINT/DGL/PyG ecosystem. The GraphSAINT repository is MIT licensed. The benchmark uses processed graph features and labels rather than raw Flickr images; original Flickr content remains subject to the licenses chosen by the original Flickr content owners. |
 
 ## Third-party code and libraries
@@ -50,6 +50,16 @@ This package may use the following public research software and libraries:
 All third-party code and libraries remain under their own licenses. Users should
 consult the corresponding upstream repositories for exact license files,
 version-specific terms, and dependency requirements.
+
+## Review package license note
+
+This anonymous package is provided for review and reproducibility during the
+NeurIPS submission process. No separate license is granted for the original code
+in this package during anonymous review unless a license file is added later.
+
+This note does not affect third-party datasets, libraries, or implementations.
+Those assets remain under their original licenses and terms, as summarized
+above.
 
 ## Dataset handling policy
 
