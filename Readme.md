@@ -4,7 +4,7 @@ Repository for **[Trapping Attacker in Dilemma: Examining Internal Correlations 
 
 ## Release status
 
-We are preparing the full open-source release, including updated code and documentation, and expect to publish it between **December 2026 and January 2027**. The files currently in this repository are an early review version. Updates will be published here.
+We are preparing the full open-source release, including updated code and documentation, and expect to publish it between **January and March 2027**. The files currently in this repository are an early review version. Updates will be published here.
 
 ## Quick start
 
