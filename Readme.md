@@ -1,9 +1,10 @@
-# PRAETORIAN Anonymous Reproducibility Package
+# PRAETORIAN
 
-This repository contains the anonymous reproduction package for the paper
-``PRAETORIAN: [anonymous submission]''. It includes the code, scripts, and
-dataset-loading utilities needed to reproduce the main experiments reported in
-the manuscript. The repository is anonymized for double-blind review.
+Repository for **[Trapping Attacker in Dilemma: Examining Internal Correlations and External Influences of Trigger for Defending GNN Backdoors](https://openreview.net/forum?id=7xWSWpsU5J)** (NeurIPS 2026).
+
+## Release status
+
+We are preparing the full open-source release, including updated code and documentation, and expect to publish it between **December 2026 and January 2027**. The files currently in this repository are an early review version. Updates will be published here.
 
 ## Quick start
 
@@ -51,15 +52,9 @@ All third-party code and libraries remain under their own licenses. Users should
 consult the corresponding upstream repositories for exact license files,
 version-specific terms, and dependency requirements.
 
-## Review package license note
+## License
 
-This anonymous package is provided for review and reproducibility during the
-NeurIPS submission process. No separate license is granted for the original code
-in this package during anonymous review unless a license file is added later.
-
-This note does not affect third-party datasets, libraries, or implementations.
-Those assets remain under their original licenses and terms, as summarized
-above.
+See [LICENSE](LICENSE) for the repository license. Third-party datasets, libraries, and implementations remain under their original licenses and terms, as summarized above.
 
 ## Dataset handling policy
 
@@ -73,13 +68,3 @@ above.
   users should download the dataset directly from the original source and comply
   with the original provider's terms.
 
-## Anonymous review
-
-This repository is hosted anonymously for review at:
-
-```text
-https://anonymous.4open.science/r/Graph_backdoor-Defense-Praetorian-E64D
-```
-
-After acceptance, the repository will be de-anonymized and moved to a permanent
-public location.
